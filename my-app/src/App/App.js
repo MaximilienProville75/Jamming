@@ -1,21 +1,39 @@
-import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
 
-function App() {
-  return (
-    <div>
-      <h1>
-        Ja<span class="highlight">mmm</span>ing
-      </h1>
-      <div class="App">
-        {/* <!-- Add a SearchBar component -->
-    <div class="App-playlist">
-      <!-- Add a SearchResults component -->
-      <!-- Add a Playlist component --> */}
+import SearchBar from "../components/SearchBar/SearchBar";
+import SearchResults from "../components/SearchResults/SearchResults";
+import Playlist from "../components/Playlist/Playlist";
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchResults: [
+        {
+          name: "",
+          artist: "",
+          album: " ",
+          id: " ",
+        },
+      ],
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>
+          Ja<span className="highlight">mmm</span>ing
+        </h1>
+        <div className="App">
+          <SearchBar />
+          <div className="App-playlist">
+            <SearchResults searchResults={this.state.searchResults} />
+            <Playlist />
+          </div>
+        </div>
       </div>
-    </div>
-    // </div>
-  );
+    );
+  }
 }
-
-export default App;
